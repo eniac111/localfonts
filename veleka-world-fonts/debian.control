@@ -1,0 +1,19 @@
+Source: fonts-veleka-world
+Section: fonts
+Priority: optional
+Maintainer: Blagovest Petrov <blagovest@petrovs.info>
+Build-Depends: debhelper-compat (= 13), unzip
+Standards-Version: 4.7.0
+Homepage: https://github.com/eniac111/Veleka
+Rules-Requires-Root: no
+
+Package: fonts-veleka-world
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Conflicts: veleka-world-fonts
+Description: serif font family with Bulgarian-style Cyrillic
+ Veleka World is a serif font family by Stefan Peev, part of the LOCAL FONTS
+ project. It is derived from Charis SIL and covers Latin, Greek, Cyrillic and
+ IPA. Applications show the Bulgarian forms of Cyrillic letters for text
+ marked as Bulgarian, or in any language with stylistic set 1.

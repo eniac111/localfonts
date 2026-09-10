@@ -1,0 +1,17 @@
+# Maintainer: Blagovest Petrov <blagovest@petrovs.info>
+
+pkgname=otf-veleka-world
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Serif font family with Bulgarian-style Cyrillic'
+arch=('any')
+url='https://github.com/eniac111/Veleka'
+license=('OFL-1.1')
+conflicts=('veleka-world-fonts')
+source=("https://github.com/eniac111/Veleka/releases/download/v$pkgver/veleka-world-fonts-$pkgver.zip")
+sha256sums=('5d70df46c01ef96dffc82400b0c628804dccf15f455fc9e41c9a7947f43406eb')
+
+package() {
+  install -Dm644 -t "$pkgdir/usr/share/fonts/veleka-world" *.otf
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
+}
