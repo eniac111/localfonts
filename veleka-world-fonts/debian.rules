@@ -2,3 +2,10 @@
 
 %:
 	dh $@
+
+# The release zip keeps the OTF files in instance_otf/; older releases had them
+# at the top level, so take them from wherever they are. -VF.otf is the CFF2
+# variable font, which is not installed: the static weights cover the same range.
+override_dh_auto_install:
+	find . -name '*.otf' ! -name '*-VF.otf' -exec install -D -m 0644 -t \
+		debian/fonts-veleka-world/usr/share/fonts/opentype/veleka-world {} +

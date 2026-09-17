@@ -28,8 +28,11 @@ marked as Bulgarian, or in any language with stylistic set 1.
 %build
 
 %install
+# The release zip keeps the OTF files in instance_otf/; older releases had them
+# at the top level, so take them from wherever they are. -VF.otf is the CFF2
+# variable font, which is not installed: the static weights cover the same range.
 install -d %{buildroot}%{fontdir}
-install -p -m 0644 *.otf %{buildroot}%{fontdir}/
+find . -name '*.otf' ! -name '*-VF.otf' -exec install -p -m 0644 -t %{buildroot}%{fontdir} {} +
 
 %if 0%{?suse_version}
 %reconfigure_fonts_scriptlets

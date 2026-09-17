@@ -24,6 +24,8 @@ The fonts are not compiled here. Each font's own repository builds it and publis
 
 OBS downloads the zip from the URLs in the spec (the `Source0` line after `#!RemoteAsset`) and in the `PKGBUILD`, and checks it against the checksums there. The Debian build reuses the same zip.
 
+Each recipe searches the unpacked zip for `*.otf` instead of hard-coding a path, so the recipes keep working whether a font ships its OTF files at the top level or in a subdirectory such as `instance_otf/`. Only the static OTF files and `OFL.txt` are installed. The TTF and web fonts are ignored, and so is any `*-VF.otf`: a variable font would otherwise register as a second copy of the family alongside the static weights.
+
 ## Updating a font to a new release
 
 1. Get the checksum of the new zip:

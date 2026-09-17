@@ -12,6 +12,8 @@ source=("https://github.com/eniac111/Veleka/releases/download/v$pkgver/veleka-wo
 sha256sums=('5d70df46c01ef96dffc82400b0c628804dccf15f455fc9e41c9a7947f43406eb')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/fonts/veleka-world" *.otf
+  # Newer release zips keep the OTF files in instance_otf/, older ones at the top
+  # level. -VF.otf is the CFF2 variable font and is deliberately not installed.
+  find . -name '*.otf' ! -name '*-VF.otf' -exec install -Dm644 -t "$pkgdir/usr/share/fonts/veleka-world" {} +
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 }
